@@ -7,8 +7,8 @@ import {
 } from "lucide-react";
 import React from "react";
 import { Button } from "../ui/button";
-import { useToast } from "../ui/use-toast";
 import { scrollToSection } from "@/hooks/scrollToSection";
+import { useToast } from "@/hooks/use-toast";
 
 const Hero = ({setIsMenuOpen}:any) => {
   const { toast } = useToast();

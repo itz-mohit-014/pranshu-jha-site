@@ -10,7 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Instagram, Mail, MessageCircle, Send } from "lucide-react";
-import { useToast } from "../ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 
 export const ContactUs = ({ visibleSections }: any) => {
   const [formData, setFormData] = useState({
