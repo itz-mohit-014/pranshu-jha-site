@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   description:
     "Learn ethical hacking and cybersecurity from eJPT certified instructor Pranshu Jha. Weekend batches available with hands-on training and real-world practice.",
   keywords: "ethical hacking, cybersecurity, eJPT, penetration testing, linux, cybersecurity training",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
