@@ -13,7 +13,9 @@ import { Instagram, Mail, MessageCircle, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 export const ContactUs = ({ visibleSections }: any) => {
-  const GOOGLE_APPS_SCRIPT_WEB_URL = process.env.NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_WEB_URL!;
+  const GOOGLE_APPS_SCRIPT_WEB_URL =
+    process.env.NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_WEB_URL!;
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -25,6 +27,7 @@ export const ContactUs = ({ visibleSections }: any) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       await fetch(GOOGLE_APPS_SCRIPT_WEB_URL, {
@@ -49,6 +52,8 @@ export const ContactUs = ({ visibleSections }: any) => {
         description: "Failed to send message. Please try again.",
         variant: "destructive",
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -117,10 +122,39 @@ export const ContactUs = ({ visibleSections }: any) => {
                   />
                   <Button
                     type="submit"
+                    disabled={loading}
                     className="w-full h-12 text-lg hover:scale-105 transition-all duration-300 bg-gradient-to-r from-primary to-secondary"
                   >
-                    <Send className="mr-2 h-5 w-5" />
-                    Send Message
+                    {loading ? (
+                      <>
+                        <svg
+                          className="animate-spin h-5 w-5 mr-2 text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          ></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                          ></path>
+                        </svg>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="mr-2 h-5 w-5" />
+                        Send Message
+                      </>
+                    )}
                   </Button>
                 </form>
               </CardContent>
