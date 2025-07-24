@@ -10,7 +10,8 @@ const Footer = ({ setIsMenuOpen }:any) => {
                <div className="max-w-5xl mx-auto text-center">
                  <div className="flex justify-center items-center space-x-3 mb-8">
                    <div className="relative">
-                     <Shield className="h-10 w-10 text-primary animate-pulse" />
+                     <img className="h-10 animate-pulse" src="/logo.png" alt="logo"/>
+                     {/* <Shield className="h-10 w-10 text-primary animate-pulse" /> */}
                      <div className="absolute inset-0 h-10 w-10 bg-primary/20 rounded-full blur-md animate-ping"></div>
                    </div>
                    <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">

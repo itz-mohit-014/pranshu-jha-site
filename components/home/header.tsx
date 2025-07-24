@@ -21,7 +21,8 @@ export const Header = ({isMenuOpen, setIsMenuOpen, isDark, setIsDark}:any) => {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center space-x-2 animate-slide-in-left">
           <div className="relative">
-            <Shield className="h-8 w-8 text-primary animate-pulse" />
+            <img className="w-10 animate-pulse" src="/logo.png" alt="logo"/>
+            {/* <Shield className="h-8 w-8 text-primary animate-pulse" /> */}
             <div className="absolute inset-0 h-8 w-8 bg-primary/20 rounded-full blur-md animate-ping"></div>
           </div>
           <span className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
