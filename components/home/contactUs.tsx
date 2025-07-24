@@ -13,6 +13,8 @@ import { Instagram, Mail, MessageCircle, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 export const ContactUs = ({ visibleSections }: any) => {
+  const GOOGLE_APPS_SCRIPT_WEB_URL = process.env.NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_WEB_URL!;
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -25,7 +27,14 @@ export const ContactUs = ({ visibleSections }: any) => {
     e.preventDefault();
 
     try {
-      console.log("Form submitted:", formData);
+      await fetch(GOOGLE_APPS_SCRIPT_WEB_URL, {
+        method: "POST",
+        mode: "no-cors", // Google Script requires this
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
       toast({
         title: "Message Sent Successfully! 🚀",

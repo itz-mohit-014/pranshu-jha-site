@@ -47,7 +47,7 @@ const Timeline = ({ visibleSections }: any) => {
             <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-secondary to-primary rounded-full transform -translate-x-1/2 z-0"></div>
 
             <div
-              className={`space-y-12 transition-all duration-1000 ${
+              className={`space-y-6 transition-all duration-1000 ${
                 timelineExpanded ? "max-h-none" : "max-h-[34rem] overflow-hidden"
               }`}
             >
@@ -60,10 +60,6 @@ const Timeline = ({ visibleSections }: any) => {
                     className={`relative md:flex ${
                       isLeft ? "md:justify-start" : "md:justify-end"
                     }`}
-
-                   style={{
-                    marginTop: index === 0 ? 0 : `-40px`,
-                  }}
                   >
                     <div
                       className={`md:w-1/2 ${
@@ -88,7 +84,7 @@ const Timeline = ({ visibleSections }: any) => {
                     </div>
 
                     {/* Dot and Line */}
-                    <div className={`absolute left-1/2 top-8 transform -translate-x-1/2 z-20`}>
+                    <div className={`absolute left-3 top-1 md:left-1/2 md:top-8 transform -translate-x-1/2 z-20`}>
                       <div className="w-5 h-5 bg-gradient-to-br from-primary to-secondary rounded-full border-4 border-background shadow-md relative">
                         <span className="absolute inset-0 animate-ping rounded-full bg-primary/40"></span>
                       </div>
