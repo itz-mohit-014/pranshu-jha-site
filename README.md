@@ -27,20 +27,32 @@ Name | Email | Subject | Message | Timestamp
 
 ```js
 function doPost(e) {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("ContactData");
-  var data = JSON.parse(e.postData.contents);
+  try {
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    const data = JSON.parse(e.postData.contents);
 
-  sheet.appendRow([
-    data.name,
-    data.email,
-    data.subject,
-    data.message,
-    new Date()
-  ]);
+    // Validate required fields
+    if (!data.name || !data.email || !data.message) {
+      throw new Error("Missing required fields");
+    }
 
-  return ContentService.createTextOutput(
-    JSON.stringify({ result: "success" })
-  ).setMimeType(ContentService.MimeType.JSON);
+    // Append to sheet
+    sheet.appendRow([
+      data.name,
+      data.email,
+      data.subject || "", // Default
+      data.message,
+      new Date()
+    ]);
+
+    return ContentService.createTextOutput(
+      JSON.stringify({ result: "success" })
+    ).setMimeType(ContentService.MimeType.JSON)
+  } catch (error) {
+    return ContentService.createTextOutput(
+      JSON.stringify({ result: "error" })
+    ).setMimeType(ContentService.MimeType.JSON)
+  }
 }
 
 ```
