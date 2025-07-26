@@ -30,14 +30,13 @@ export const ContactUs = ({ visibleSections }: any) => {
     setLoading(true);
 
     try {
-      await fetch(GOOGLE_APPS_SCRIPT_WEB_URL, {
-        method: "POST",
-        mode: "no-cors", // Google Script requires this
+      await fetch("/api/contact", {
         headers: {
           "Content-Type": "application/json",
         },
+        method: "POST",
         body: JSON.stringify(formData),
-      });
+      })
 
       toast({
         title: "Message Sent Successfully! 🚀",
